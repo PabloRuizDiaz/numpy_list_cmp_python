@@ -16,6 +16,8 @@ __email__ = "alumnos@inove.com.ar"
 __version__ = "1.1"
 
 import numpy as np
+import random
+import math
 
 
 def ej1():
@@ -42,6 +44,15 @@ def ej1():
     Realizar este proceso iterativo hasta cumplir el objetivo
     '''
 
+    while True:
+        random_list = [random.randint(1, 10) for x in range(2)]
+
+        if np.sum(random_list) <= 21:
+            print(np.sum(random_list))
+            break
+        else:
+            continue
+
 
 def ej2():
     print('Comenzamos a ponernos serios!')
@@ -61,8 +72,7 @@ def ej2():
                'Alejandro', 'Leonel', 'Antonio', 'Omar', 'Antonia', 'Amalia',
                'Daniela', 'Sofia', 'Celeste', 'Ramon', 'Jorgelina', 'Anabela']
 
-    # Se espera obtener:
-    # ['Tamara', 'Juan', 'Alberto'......]
+    print([nombre for nombre in nombres if nombre[0] in padron])
 
 
 def ej3():
@@ -80,7 +90,7 @@ def ej3():
     # NO utilizar comprensión de listas, solo utilice la
     # funcion de numpy "np.sin"
 
-    # y_nump =
+    y_nump = np.sin(x)
 
     # Conjunto de valores "X" en una lista
     x = list(np.arange(0, 2*np.pi, 0.1))
@@ -89,7 +99,7 @@ def ej3():
     # "y_list" que tenga todos los valores obtenidos como resultado
     # de someter cada valor de "X" a la función math.sin
 
-    # y_list =
+    y_list = [math.sin(y) for y in x]
 
     # Este es un ejemplo práctico de cuando es útil usar numpy,
     # basicamente siempre que deseen utilizar una función matemática
@@ -124,6 +134,9 @@ def ej4():
     # de diccionarios que tiene un parametro configurable respecto
     # que sucede sino encuentra la "key" en el diccionario.
 
+    lista_compra_nombre = [producto.get(x, 'NaN') for x in lista_compra_id]
+
+    print(lista_compra_nombre)
 
 def ej5():
     print("Ahora sí! buena suerte :)")
@@ -148,6 +161,32 @@ def ej5():
     más cercanos a 21 sin pasarse!
     '''
 
+    player1_card = [random.randint(1,11) for i in range(1)]
+
+    player2_card = [random.randint(1,11) for i in range(1)]
+
+    print('Jugador 1: ', np.sum(player1_card), '\nJugador 2: ', np.sum(player2_card))
+
+    while True:
+        player1_new_card = str(input('El Jugador 1 desea otra carta? (Y/N)'))
+
+        if player1_new_card == 'Y':
+            player1_card.append(random.randint(1,11))
+
+            print('Jugador 1: ', np.sum(player1_card)
+            
+        player2_new_card = str(input('El Jugador 2 desea otra carta? (Y/N)'))
+
+        if player2_new_card == 'Y':
+            player2_card.append(random.randint(1,11))
+
+            print('Jugador 2: ', np.sum(player2_card))
+    
+        if player1_new_card == 'N' and player2_new_card == 'N':
+            break
+
+    print('Jugador 1: ', np.sum(player1_card), '\nJugador 2: ', np.sum(player2_card))
+
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
@@ -155,4 +194,4 @@ if __name__ == '__main__':
     # ej2()
     # ej3()
     # ej4()
-    # ej5()
+    ej5()
