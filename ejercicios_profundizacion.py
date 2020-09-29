@@ -173,7 +173,7 @@ def ej5():
         if player1_new_card == 'Y':
             player1_card.append(random.randint(1,11))
 
-            print('Jugador 1: ', np.sum(player1_card)
+            print('Jugador 1: ', np.sum(player1_card))
             
         player2_new_card = str(input('El Jugador 2 desea otra carta? (Y/N)'))
 
@@ -187,11 +187,24 @@ def ej5():
 
     print('Jugador 1: ', np.sum(player1_card), '\nJugador 2: ', np.sum(player2_card))
 
+    if np.sum(player1_card) > 21 and np.sum(player2_card) > 21:
+        print('Jugador 1 y 2 Perdieron')
+    elif np.sum(player1_card) <= 21 and np.sum(player2_card) > 21:
+        print('Ganador: Jugador 1')
+    elif np.sum(player1_card) > np.sum(player2_card) and np.sum(player1_card) <= 21 and np.sum(player2_card) <= 21:
+        print('Ganador: Jugador 1')
+    elif np.sum(player2_card) <= 21 and np.sum(player1_card) > 21:
+        print('Ganador: Jugador 2')
+    elif np.sum(player2_card) > np.sum(player1_card) and np.sum(player2_card) <= 21 and np.sum(player1_card) <= 21:
+        print('Ganador: Jugador 2')
+    else:
+        print('Empate!!!')
+
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
-    # ej1()
-    # ej2()
-    # ej3()
-    # ej4()
+    ej1()
+    ej2()
+    ej3()
+    ej4()
     ej5()
